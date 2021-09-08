@@ -1,0 +1,9 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://Fonts/Bumpo.ttf" type="DynamicFontData" id=1]
+
+[resource]
+size = 55
+outline_size = 2
+outline_color = Color( 0.701961, 0.396078, 0, 1 )
+font_data = ExtResource( 1 )
