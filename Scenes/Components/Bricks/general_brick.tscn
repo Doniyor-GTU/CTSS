@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Components/Bricks/brick.gd" type="Script" id=1]
+[ext_resource path="res://Art/square.png" type="Texture" id=2]
+[ext_resource path="res://Art/circle.png" type="Texture" id=3]
+[ext_resource path="res://Art/triangle.png" type="Texture" id=4]
+[ext_resource path="res://Art/star.png" type="Texture" id=5]
+
+[node name="general_brick" type="Node2D"]
+scale = Vector2( 0.7, 0.7 )
+script = ExtResource( 1 )
+circle = ExtResource( 3 )
+star = ExtResource( 5 )
+triangle = ExtResource( 4 )
+square = ExtResource( 2 )
+grid_type = [ [ Vector2( 0, 0 ), "null" ], [ Vector2( 0, 1 ), "null" ], [ Vector2( 0, 2 ), "null" ], [ Vector2( 1, 0 ), "null" ], [ Vector2( 1, 1 ), "square" ], [ Vector2( 1, 2 ), "null" ], [ Vector2( 2, 0 ), "null" ], [ Vector2( 2, 1 ), "null" ], [ Vector2( 2, 2 ), "null" ] ]
+
+[node name="icons" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon1" type="TextureRect" parent="icons"]
+margin_left = -95.0
+margin_top = -96.0
+margin_right = -45.0
+margin_bottom = -46.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="icons"]
+margin_left = -25.5033
+margin_top = -96.0
+margin_right = 24.4967
+margin_bottom = -46.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon3" type="TextureRect" parent="icons"]
+margin_left = 45.0
+margin_top = -96.0
+margin_right = 95.0
+margin_bottom = -46.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon4" type="TextureRect" parent="icons"]
+margin_left = -95.0
+margin_top = -25.0
+margin_right = -45.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon5" type="TextureRect" parent="icons"]
+margin_left = -25.1622
+margin_top = -25.0
+margin_right = 24.8378
+margin_bottom = 25.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon6" type="TextureRect" parent="icons"]
+margin_left = 45.0
+margin_top = -25.0
+margin_right = 95.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon7" type="TextureRect" parent="icons"]
+margin_left = -95.0
+margin_top = 45.0
+margin_right = -45.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon8" type="TextureRect" parent="icons"]
+margin_left = -26.0
+margin_top = 45.0
+margin_right = 24.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon9" type="TextureRect" parent="icons"]
+margin_left = 45.0
+margin_top = 45.0
+margin_right = 95.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ExitTween" type="Tween" parent="."]
+
+[node name="ExpandTween" type="Tween" parent="."]
+[connection signal="gui_input" from="icons/icon1" to="." method="_on_icon1_gui_input"]
+[connection signal="gui_input" from="icons/icon2" to="." method="_on_icon2_gui_input"]
+[connection signal="gui_input" from="icons/icon3" to="." method="_on_icon3_gui_input"]
+[connection signal="gui_input" from="icons/icon4" to="." method="_on_icon4_gui_input"]
+[connection signal="gui_input" from="icons/icon5" to="." method="_on_icon5_gui_input"]
+[connection signal="gui_input" from="icons/icon6" to="." method="_on_icon6_gui_input"]
+[connection signal="gui_input" from="icons/icon7" to="." method="_on_icon7_gui_input"]
+[connection signal="gui_input" from="icons/icon8" to="." method="_on_icon8_gui_input"]
+[connection signal="gui_input" from="icons/icon9" to="." method="_on_icon9_gui_input"]

@@ -1,0 +1,907 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://themes/standart/long_box.tres" type="StyleBox" id=2]
+[ext_resource path="res://Scripts/Grid.gd" type="Script" id=3]
+[ext_resource path="res://themes/standart/turn_bg2.tres" type="StyleBox" id=4]
+[ext_resource path="res://themes/standart/replay_btn_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://Scripts/Bottom_ui.gd" type="Script" id=6]
+[ext_resource path="res://Art/Background.png" type="Texture" id=7]
+[ext_resource path="res://themes/standart/score_bg2.tres" type="StyleBox" id=8]
+[ext_resource path="res://themes/standart/box.tres" type="StyleBox" id=9]
+[ext_resource path="res://themes/standart/replay_btn_pressed.tres" type="StyleBox" id=10]
+[ext_resource path="res://Scripts/GridContainer.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/Components/Brick_panel/brick_panel_plane.tscn" type="PackedScene" id=12]
+[ext_resource path="res://themes/standart/replay_btn_hover.tres" type="StyleBox" id=13]
+[ext_resource path="res://themes/standart/score_font.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Scripts/Sound.gd" type="Script" id=15]
+[ext_resource path="res://themes/standart/homey_btn_normal.tres" type="StyleBox" id=16]
+[ext_resource path="res://themes/standart/homey_btn_pressed.tres" type="StyleBox" id=17]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=18]
+[ext_resource path="res://themes/standart/high_score_font.tres" type="DynamicFont" id=19]
+[ext_resource path="res://Scripts/Top_ui.gd" type="Script" id=20]
+[ext_resource path="res://themes/standart/ScoreIncreaseAnimation.tres" type="Animation" id=21]
+[ext_resource path="res://themes/standart/ScoreIncreaseAnimation_other_themes.tres" type="Animation" id=22]
+[ext_resource path="res://themes/standart/Turn_Label.tres" type="DynamicFont" id=23]
+[ext_resource path="res://Scripts/Turn_Label.gd" type="Script" id=24]
+[ext_resource path="res://Scenes/Hammer_Button.tscn" type="PackedScene" id=25]
+[ext_resource path="res://themes/standart/ErrorFont.tres" type="DynamicFont" id=26]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.392157 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "show_turn_number"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.5, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -400, 378 ), Vector2( 108, 378 ), Vector2( 108, 378 ), Vector2( 666, 378 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="Game" type="Node"]
+
+[node name="Main" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="AdMob" type="Node" parent="Main"]
+script = ExtResource( 18 )
+__meta__ = {
+"_editor_description_": ""
+}
+is_real = true
+banner_id = "ca-app-pub-8647559794008327/4341432081"
+interstitial_id = "ca-app-pub-8647559794008327/2836778728"
+rewarded_id = "ca-app-pub-8647559794008327/5271370372"
+
+[node name="BannerLoadTimer" type="Timer" parent="Main/AdMob"]
+wait_time = 5.0
+one_shot = true
+
+[node name="BannerReloadTimer" type="Timer" parent="Main/AdMob"]
+wait_time = 60.0
+one_shot = true
+
+[node name="InterstitialLoadTimer" type="Timer" parent="Main/AdMob"]
+wait_time = 10.0
+one_shot = true
+
+[node name="RewardLoadTimer" type="Timer" parent="Main/AdMob"]
+wait_time = 5.0
+one_shot = true
+
+[node name="StartLoadTimer" type="Timer" parent="Main/AdMob"]
+wait_time = 5.0
+one_shot = true
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dark_effect" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -269.0
+margin_top = -413.0
+margin_right = 270.0
+margin_bottom = 493.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top_ui" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -278.0
+margin_top = -415.0
+margin_right = 278.0
+margin_bottom = -343.0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Etap" type="Label" parent="Top_ui"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.865
+margin_top = -19.4667
+margin_right = -10.8653
+margin_bottom = 30.5333
+rect_min_size = Vector2( 0, 50 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.701961, 0.396078, 0, 1 )
+text = "999"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Top_ui/Etap"]
+anims/ScoreIncreaseAnimation_other_themes = ExtResource( 22 )
+anims/score_increase = ExtResource( 21 )
+
+[node name="High_Score" type="Label" parent="Top_ui"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1.75684
+margin_top = -19.2758
+margin_right = 178.243
+margin_bottom = 30.7242
+rect_min_size = Vector2( 0, 50 )
+rect_clip_content = true
+custom_styles/normal = ExtResource( 8 )
+custom_fonts/font = ExtResource( 19 )
+custom_colors/font_color = Color( 0.0784314, 0.364706, 0.407843, 1 )
+text = "BEST 99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Replay_Button" type="Button" parent="Top_ui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -83.0
+margin_top = -25.0
+margin_right = -19.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home_Button" type="Button" parent="Top_ui"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 23.0
+margin_top = -20.0
+margin_right = 76.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 53, 53 )
+custom_styles/hover = ExtResource( 16 )
+custom_styles/pressed = ExtResource( 17 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hammer_Button" parent="Top_ui" instance=ExtResource( 25 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -174.5
+margin_top = -18.5
+margin_right = -125.5
+margin_bottom = 30.5
+
+[node name="ErrorMessage" type="Label" parent="Top_ui"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -134.5
+margin_top = -64.0
+margin_right = 134.5
+margin_bottom = -44.0
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 0.0784314, 0.364706, 0.407843, 1 )
+text = "No Internet Connection"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Top_ui/ErrorMessage"]
+
+[node name="Timer" type="Timer" parent="Top_ui/ErrorMessage"]
+wait_time = 3.0
+one_shot = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -259.0
+margin_top = -337.0
+margin_right = 258.0
+margin_bottom = 180.0
+custom_constants/vseparation = 3
+custom_constants/hseparation = 3
+columns = 8
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="GridContainer"]
+margin_right = 62.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel2" type="Panel" parent="GridContainer"]
+margin_left = 65.0
+margin_right = 127.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel3" type="Panel" parent="GridContainer"]
+margin_left = 130.0
+margin_right = 192.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel4" type="Panel" parent="GridContainer"]
+margin_left = 195.0
+margin_right = 257.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel5" type="Panel" parent="GridContainer"]
+margin_left = 260.0
+margin_right = 322.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel6" type="Panel" parent="GridContainer"]
+margin_left = 325.0
+margin_right = 387.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel7" type="Panel" parent="GridContainer"]
+margin_left = 390.0
+margin_right = 452.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel8" type="Panel" parent="GridContainer"]
+margin_left = 455.0
+margin_right = 517.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel9" type="Panel" parent="GridContainer"]
+margin_top = 65.0
+margin_right = 62.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel10" type="Panel" parent="GridContainer"]
+margin_left = 65.0
+margin_top = 65.0
+margin_right = 127.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel11" type="Panel" parent="GridContainer"]
+margin_left = 130.0
+margin_top = 65.0
+margin_right = 192.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel12" type="Panel" parent="GridContainer"]
+margin_left = 195.0
+margin_top = 65.0
+margin_right = 257.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel13" type="Panel" parent="GridContainer"]
+margin_left = 260.0
+margin_top = 65.0
+margin_right = 322.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel14" type="Panel" parent="GridContainer"]
+margin_left = 325.0
+margin_top = 65.0
+margin_right = 387.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel15" type="Panel" parent="GridContainer"]
+margin_left = 390.0
+margin_top = 65.0
+margin_right = 452.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel16" type="Panel" parent="GridContainer"]
+margin_left = 455.0
+margin_top = 65.0
+margin_right = 517.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel17" type="Panel" parent="GridContainer"]
+margin_top = 130.0
+margin_right = 62.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel18" type="Panel" parent="GridContainer"]
+margin_left = 65.0
+margin_top = 130.0
+margin_right = 127.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel19" type="Panel" parent="GridContainer"]
+margin_left = 130.0
+margin_top = 130.0
+margin_right = 192.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel20" type="Panel" parent="GridContainer"]
+margin_left = 195.0
+margin_top = 130.0
+margin_right = 257.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel21" type="Panel" parent="GridContainer"]
+margin_left = 260.0
+margin_top = 130.0
+margin_right = 322.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel22" type="Panel" parent="GridContainer"]
+margin_left = 325.0
+margin_top = 130.0
+margin_right = 387.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel23" type="Panel" parent="GridContainer"]
+margin_left = 390.0
+margin_top = 130.0
+margin_right = 452.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel24" type="Panel" parent="GridContainer"]
+margin_left = 455.0
+margin_top = 130.0
+margin_right = 517.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel25" type="Panel" parent="GridContainer"]
+margin_top = 195.0
+margin_right = 62.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel26" type="Panel" parent="GridContainer"]
+margin_left = 65.0
+margin_top = 195.0
+margin_right = 127.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel27" type="Panel" parent="GridContainer"]
+margin_left = 130.0
+margin_top = 195.0
+margin_right = 192.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel28" type="Panel" parent="GridContainer"]
+margin_left = 195.0
+margin_top = 195.0
+margin_right = 257.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel29" type="Panel" parent="GridContainer"]
+margin_left = 260.0
+margin_top = 195.0
+margin_right = 322.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel30" type="Panel" parent="GridContainer"]
+margin_left = 325.0
+margin_top = 195.0
+margin_right = 387.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel31" type="Panel" parent="GridContainer"]
+margin_left = 390.0
+margin_top = 195.0
+margin_right = 452.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel32" type="Panel" parent="GridContainer"]
+margin_left = 455.0
+margin_top = 195.0
+margin_right = 517.0
+margin_bottom = 257.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel33" type="Panel" parent="GridContainer"]
+margin_top = 260.0
+margin_right = 62.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel34" type="Panel" parent="GridContainer"]
+margin_left = 65.0
+margin_top = 260.0
+margin_right = 127.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel35" type="Panel" parent="GridContainer"]
+margin_left = 130.0
+margin_top = 260.0
+margin_right = 192.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel36" type="Panel" parent="GridContainer"]
+margin_left = 195.0
+margin_top = 260.0
+margin_right = 257.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel37" type="Panel" parent="GridContainer"]
+margin_left = 260.0
+margin_top = 260.0
+margin_right = 322.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel38" type="Panel" parent="GridContainer"]
+margin_left = 325.0
+margin_top = 260.0
+margin_right = 387.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel39" type="Panel" parent="GridContainer"]
+margin_left = 390.0
+margin_top = 260.0
+margin_right = 452.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel40" type="Panel" parent="GridContainer"]
+margin_left = 455.0
+margin_top = 260.0
+margin_right = 517.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel41" type="Panel" parent="GridContainer"]
+margin_top = 325.0
+margin_right = 62.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel42" type="Panel" parent="GridContainer"]
+margin_left = 65.0
+margin_top = 325.0
+margin_right = 127.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel43" type="Panel" parent="GridContainer"]
+margin_left = 130.0
+margin_top = 325.0
+margin_right = 192.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel44" type="Panel" parent="GridContainer"]
+margin_left = 195.0
+margin_top = 325.0
+margin_right = 257.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel45" type="Panel" parent="GridContainer"]
+margin_left = 260.0
+margin_top = 325.0
+margin_right = 322.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel46" type="Panel" parent="GridContainer"]
+margin_left = 325.0
+margin_top = 325.0
+margin_right = 387.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel47" type="Panel" parent="GridContainer"]
+margin_left = 390.0
+margin_top = 325.0
+margin_right = 452.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel48" type="Panel" parent="GridContainer"]
+margin_left = 455.0
+margin_top = 325.0
+margin_right = 517.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel49" type="Panel" parent="GridContainer"]
+margin_top = 390.0
+margin_right = 62.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel50" type="Panel" parent="GridContainer"]
+margin_left = 65.0
+margin_top = 390.0
+margin_right = 127.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel51" type="Panel" parent="GridContainer"]
+margin_left = 130.0
+margin_top = 390.0
+margin_right = 192.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel52" type="Panel" parent="GridContainer"]
+margin_left = 195.0
+margin_top = 390.0
+margin_right = 257.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel53" type="Panel" parent="GridContainer"]
+margin_left = 260.0
+margin_top = 390.0
+margin_right = 322.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel54" type="Panel" parent="GridContainer"]
+margin_left = 325.0
+margin_top = 390.0
+margin_right = 387.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel55" type="Panel" parent="GridContainer"]
+margin_left = 390.0
+margin_top = 390.0
+margin_right = 452.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel56" type="Panel" parent="GridContainer"]
+margin_left = 455.0
+margin_top = 390.0
+margin_right = 517.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel57" type="Panel" parent="GridContainer"]
+margin_top = 455.0
+margin_right = 62.0
+margin_bottom = 517.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel58" type="Panel" parent="GridContainer"]
+margin_left = 65.0
+margin_top = 455.0
+margin_right = 127.0
+margin_bottom = 517.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel59" type="Panel" parent="GridContainer"]
+margin_left = 130.0
+margin_top = 455.0
+margin_right = 192.0
+margin_bottom = 517.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel60" type="Panel" parent="GridContainer"]
+margin_left = 195.0
+margin_top = 455.0
+margin_right = 257.0
+margin_bottom = 517.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel61" type="Panel" parent="GridContainer"]
+margin_left = 260.0
+margin_top = 455.0
+margin_right = 322.0
+margin_bottom = 517.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel62" type="Panel" parent="GridContainer"]
+margin_left = 325.0
+margin_top = 455.0
+margin_right = 387.0
+margin_bottom = 517.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel63" type="Panel" parent="GridContainer"]
+margin_left = 390.0
+margin_top = 455.0
+margin_right = 452.0
+margin_bottom = 517.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Panel64" type="Panel" parent="GridContainer"]
+margin_left = 455.0
+margin_top = 455.0
+margin_right = 517.0
+margin_bottom = 517.0
+rect_min_size = Vector2( 62, 62 )
+custom_styles/panel = ExtResource( 9 )
+
+[node name="Grid" type="Node2D" parent="."]
+pause_mode = 2
+script = ExtResource( 3 )
+rows = 8
+columns = 8
+x_start = 29
+y_start = 175
+offset = 31
+border_color = Color( 0.937255, 0.733333, 0, 1 )
+
+[node name="Bottom_ui" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -257.0
+margin_top = 201.0
+margin_right = 257.0
+margin_bottom = 480.0
+custom_constants/separation = 8
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brick_panel4" parent="Bottom_ui" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 166.0
+margin_bottom = 279.0
+custom_styles/panel = ExtResource( 2 )
+panel_no = 1
+
+[node name="brick_panel5" parent="Bottom_ui" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 174.0
+margin_right = 340.0
+margin_bottom = 279.0
+custom_styles/panel = ExtResource( 2 )
+panel_no = 2
+
+[node name="brick_panel6" parent="Bottom_ui" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 348.0
+margin_right = 514.0
+margin_bottom = 279.0
+custom_styles/panel = ExtResource( 2 )
+panel_no = 3
+
+[node name="Destroy_Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="GoBackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sound" type="Node" parent="."]
+script = ExtResource( 15 )
+
+[node name="Turn_Label" type="Label" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -688.0
+margin_top = -134.0
+margin_right = -323.0
+margin_bottom = -74.0
+custom_fonts/font = ExtResource( 23 )
+custom_colors/font_color = Color( 1, 0.776471, 0, 1 )
+text = "TURN 806"
+align = 1
+valign = 1
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Turn_Label"]
+anims/show_turn_number = SubResource( 3 )
+[connection signal="give_new_bricks" from="Main" to="Bottom_ui/brick_panel6" method="_on_Main_give_new_bricks"]
+[connection signal="give_new_bricks" from="Main" to="Bottom_ui/brick_panel5" method="_on_Main_give_new_bricks"]
+[connection signal="give_new_bricks" from="Main" to="Bottom_ui/brick_panel4" method="_on_Main_give_new_bricks"]
+[connection signal="banner_failed_to_load" from="Main/AdMob" to="Main" method="_on_AdMob_banner_failed_to_load"]
+[connection signal="banner_loaded" from="Main/AdMob" to="Main" method="_on_AdMob_banner_loaded"]
+[connection signal="banner_loaded" from="Main/AdMob" to="Top_ui" method="_on_AdMob_banner_loaded"]
+[connection signal="interstitial_closed" from="Main/AdMob" to="Main" method="_on_AdMob_interstitial_closed"]
+[connection signal="interstitial_failed_to_load" from="Main/AdMob" to="Main" method="_on_AdMob_interstitial_failed_to_load"]
+[connection signal="rewarded" from="Main/AdMob" to="Main" method="_on_AdMob_rewarded"]
+[connection signal="rewarded_video_closed" from="Main/AdMob" to="Main" method="_on_AdMob_rewarded_video_closed"]
+[connection signal="rewarded_video_failed_to_load" from="Main/AdMob" to="Main" method="_on_AdMob_rewarded_video_failed_to_load"]
+[connection signal="rewarded_video_loaded" from="Main/AdMob" to="Top_ui/Hammer_Button" method="_on_AdMob_rewarded_video_loaded"]
+[connection signal="timeout" from="Main/AdMob/BannerLoadTimer" to="Main" method="_on_BannerLoadTimer_timeout"]
+[connection signal="timeout" from="Main/AdMob/BannerReloadTimer" to="Main" method="_on_BannerReloadTimer_timeout"]
+[connection signal="timeout" from="Main/AdMob/InterstitialLoadTimer" to="Main" method="_on_InterstitialLoadTimer_timeout"]
+[connection signal="timeout" from="Main/AdMob/RewardLoadTimer" to="Main" method="_on_RewardLoadTimer_timeout"]
+[connection signal="timeout" from="Main/AdMob/StartLoadTimer" to="Main" method="_on_StartLoadTimer_timeout"]
+[connection signal="hammer_booster_pressed" from="Top_ui" to="Grid" method="_on_Top_ui_hammer_booster_pressed"]
+[connection signal="pressed" from="Top_ui/Replay_Button" to="Main" method="_on_Replay_Button_pressed"]
+[connection signal="pressed" from="Top_ui/Home_Button" to="Main" method="_on_Home_Button_pressed"]
+[connection signal="pressed" from="Top_ui/Home_Button" to="Sound" method="_on_Home_Button_pressed"]
+[connection signal="btn_pressed" from="Top_ui/Hammer_Button" to="Top_ui" method="_on_Hammer_Button_btn_pressed"]
+[connection signal="pressed" from="Top_ui/Hammer_Button" to="Sound" method="_on_Hammer_Button_pressed"]
+[connection signal="watch_add" from="Top_ui/Hammer_Button" to="Main" method="_on_Hammer_Button_watch_add"]
+[connection signal="timeout" from="Top_ui/ErrorMessage/Timer" to="Top_ui" method="_on_Timer_timeout"]
+[connection signal="resized" from="GridContainer" to="Grid" method="_on_GridContainer_resized"]
+[connection signal="brick_passed" from="Grid" to="Main" method="_on_Grid_brick_passed"]
+[connection signal="brick_passed" from="Grid" to="Sound" method="_on_Grid_brick_passed"]
+[connection signal="brick_wrong_place" from="Grid" to="Sound" method="_on_Grid_brick_wrong_place"]
+[connection signal="destroyed" from="Grid" to="Sound" method="_on_Grid_destroyed"]
+[connection signal="error_sound" from="Grid" to="Sound" method="_on_Grid_error_sound"]
+[connection signal="game_over" from="Grid" to="Main" method="_on_Grid_game_over"]
+[connection signal="game_stucked" from="Grid" to="Main" method="_on_Grid_game_stucked"]
+[connection signal="hammer_booster_place" from="Grid" to="Top_ui" method="_on_Grid_hammer_booster_place"]
+[connection signal="shape_added" from="Grid" to="Sound" method="_on_Grid_shape_added"]
+[connection signal="brick_rotated" from="Bottom_ui/brick_panel4" to="Sound" method="_on_brick_panel4_brick_rotated"]
+[connection signal="bricks_added" from="Bottom_ui/brick_panel4" to="Sound" method="_on_brick_panel4_bricks_added"]
+[connection signal="dragged_brickk" from="Bottom_ui/brick_panel4" to="Grid" method="_on_brick_panel4_dragged_brickk"]
+[connection signal="mouse_released" from="Bottom_ui/brick_panel4" to="Grid" method="_on_brick_panel4_mouse_released"]
+[connection signal="brick_rotated" from="Bottom_ui/brick_panel5" to="Sound" method="_on_brick_panel5_brick_rotated"]
+[connection signal="bricks_added" from="Bottom_ui/brick_panel5" to="Sound" method="_on_brick_panel5_bricks_added"]
+[connection signal="dragged_brickk" from="Bottom_ui/brick_panel5" to="Grid" method="_on_brick_panel5_dragged_brickk"]
+[connection signal="mouse_released" from="Bottom_ui/brick_panel5" to="Grid" method="_on_brick_panel5_mouse_released"]
+[connection signal="brick_rotated" from="Bottom_ui/brick_panel6" to="Sound" method="_on_brick_panel6_brick_rotated"]
+[connection signal="bricks_added" from="Bottom_ui/brick_panel6" to="Sound" method="_on_brick_panel6_bricks_added"]
+[connection signal="dragged_brickk" from="Bottom_ui/brick_panel6" to="Grid" method="_on_brick_panel6_dragged_brickk"]
+[connection signal="mouse_released" from="Bottom_ui/brick_panel6" to="Grid" method="_on_brick_panel6_mouse_released"]
+[connection signal="timeout" from="Destroy_Timer" to="Grid" method="_on_Destroy_Timer_timeout"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/pause_screen.gd" type="Script" id=2]
+[ext_resource path="res://themes/standart/replay_button_normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://themes/standart/game_over_panel.tres" type="StyleBox" id=4]
+[ext_resource path="res://themes/standart/replay_button_pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://Scripts/SoundGameOverScreen.gd" type="Script" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+
+[node name="pause_screen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -303.0
+margin_top = -263.0
+margin_right = 297.0
+margin_bottom = 87.0
+custom_styles/panel = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="GameOverPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -143.0
+margin_top = -64.0
+margin_right = 157.0
+margin_bottom = 136.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Sound" type="Node" parent="."]
+script = ExtResource( 6 )
+[connection signal="ready" from="." to="Sound" method="_on_pause_screen_ready"]
+[connection signal="gui_input" from="ColorRect" to="." method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="GameOverPanel/Button" to="Sound" method="_on_Button_pressed"]
+[connection signal="pressed" from="GameOverPanel/Button" to="." method="_on_Button_pressed"]

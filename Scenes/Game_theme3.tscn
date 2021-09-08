@@ -1,0 +1,355 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Scenes/Game.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/LOGO.png" type="Texture" id=2]
+[ext_resource path="res://themes/1/score_bg.tres" type="StyleBox" id=3]
+[ext_resource path="res://themes/1/1_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://themes/3/replaya_btn_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://themes/3/box_bg_2.tres" type="StyleBox" id=6]
+[ext_resource path="res://themes/3/box_bg_1.tres" type="StyleBox" id=7]
+[ext_resource path="res://themes/3/replaya_btn_pressed.tres" type="StyleBox" id=8]
+[ext_resource path="res://themes/3/home_btn_normal.tres" type="StyleBox" id=9]
+[ext_resource path="res://themes/3/home_btn_pressed.tres" type="StyleBox" id=10]
+[ext_resource path="res://themes/1/1_high_score_font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://themes/1/Turn_Label.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Art/hammer_booster5.png" type="Texture" id=13]
+[ext_resource path="res://Art/hammer_booster4.png" type="Texture" id=15]
+[ext_resource path="res://themes/1/error_font.tres" type="DynamicFont" id=16]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 332, 332 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+modulate_color = Color( 0.25098, 0.12549, 0.427451, 1 )
+
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/hammer_booster6.png-197f31201be1f7a4292912e0b4ce59f2.stex"
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = SubResource( 6 )
+region_rect = Rect2( 0, 0, 332, 332 )
+modulate_color = Color( 0.196078, 0.0784314, 0.360784, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 332, 332 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+modulate_color = Color( 0.196078, 0.0784314, 0.360784, 0.392157 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 332, 332 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+modulate_color = Color( 0.25098, 0.12549, 0.427451, 1 )
+
+[node name="Game_theme3" instance=ExtResource( 1 )]
+
+[node name="BackgroundColor" parent="." index="1"]
+color = Color( 0.435294, 0.207843, 0.768627, 1 )
+
+[node name="Background" parent="." index="2"]
+visible = false
+
+[node name="dark_effect" parent="." index="3"]
+visible = false
+
+[node name="Etap" parent="Top_ui" index="0"]
+margin_left = -137.0
+margin_top = -52.0
+margin_right = -40.0
+margin_bottom = 50.0
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.596078, 0.862745, 0.333333, 1 )
+text = "10"
+align = 2
+
+[node name="High_Score" parent="Top_ui" index="1"]
+margin_left = 40.0
+margin_top = -52.0
+margin_right = 183.0
+margin_bottom = 50.0
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 0.92549, 0.305882, 0.254902, 1 )
+text = "10"
+align = 0
+
+[node name="Replay_Button" parent="Top_ui" index="2"]
+margin_left = -75.0
+margin_right = -27.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 48, 48 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/normal = ExtResource( 5 )
+
+[node name="icon" type="TextureRect" parent="Top_ui" index="3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -36.0
+margin_top = 2.0
+margin_right = 34.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 70, 60 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Home_Button" parent="Top_ui" index="4"]
+margin_left = 24.0
+margin_top = -30.0
+margin_right = 77.0
+margin_bottom = 23.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+
+[node name="Hammer_Button" parent="Top_ui" index="5"]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 90.0
+margin_top = -28.0
+margin_right = 139.0
+margin_bottom = 21.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+normal_texture = ExtResource( 15 )
+add_texture = ExtResource( 13 )
+pressed_texture = ExtResource( 15 )
+modulate_color = Color( 0.25098, 0.12549, 0.427451, 1 )
+
+[node name="ErrorMessage" parent="Top_ui" index="6"]
+margin_top = -68.0
+margin_right = 148.5
+margin_bottom = -36.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color = Color( 0.733333, 0.568627, 0.972549, 1 )
+
+[node name="Panel" parent="GridContainer" index="0"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel2" parent="GridContainer" index="1"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel3" parent="GridContainer" index="2"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel4" parent="GridContainer" index="3"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel5" parent="GridContainer" index="4"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel6" parent="GridContainer" index="5"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel7" parent="GridContainer" index="6"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel8" parent="GridContainer" index="7"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel9" parent="GridContainer" index="8"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel10" parent="GridContainer" index="9"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel11" parent="GridContainer" index="10"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel12" parent="GridContainer" index="11"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel13" parent="GridContainer" index="12"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel14" parent="GridContainer" index="13"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel15" parent="GridContainer" index="14"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel16" parent="GridContainer" index="15"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel17" parent="GridContainer" index="16"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel18" parent="GridContainer" index="17"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel19" parent="GridContainer" index="18"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel20" parent="GridContainer" index="19"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel21" parent="GridContainer" index="20"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel22" parent="GridContainer" index="21"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel23" parent="GridContainer" index="22"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel24" parent="GridContainer" index="23"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel25" parent="GridContainer" index="24"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel26" parent="GridContainer" index="25"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel27" parent="GridContainer" index="26"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel28" parent="GridContainer" index="27"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel29" parent="GridContainer" index="28"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel30" parent="GridContainer" index="29"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel31" parent="GridContainer" index="30"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel32" parent="GridContainer" index="31"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel33" parent="GridContainer" index="32"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel34" parent="GridContainer" index="33"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel35" parent="GridContainer" index="34"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel36" parent="GridContainer" index="35"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel37" parent="GridContainer" index="36"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel38" parent="GridContainer" index="37"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel39" parent="GridContainer" index="38"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel40" parent="GridContainer" index="39"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel41" parent="GridContainer" index="40"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel42" parent="GridContainer" index="41"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel43" parent="GridContainer" index="42"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel44" parent="GridContainer" index="43"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel45" parent="GridContainer" index="44"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel46" parent="GridContainer" index="45"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel47" parent="GridContainer" index="46"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel48" parent="GridContainer" index="47"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel49" parent="GridContainer" index="48"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel50" parent="GridContainer" index="49"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel51" parent="GridContainer" index="50"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel52" parent="GridContainer" index="51"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel53" parent="GridContainer" index="52"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel54" parent="GridContainer" index="53"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel55" parent="GridContainer" index="54"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel56" parent="GridContainer" index="55"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel57" parent="GridContainer" index="56"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel58" parent="GridContainer" index="57"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel59" parent="GridContainer" index="58"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel60" parent="GridContainer" index="59"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel61" parent="GridContainer" index="60"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel62" parent="GridContainer" index="61"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Panel63" parent="GridContainer" index="62"]
+custom_styles/panel = ExtResource( 7 )
+
+[node name="Panel64" parent="GridContainer" index="63"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Grid" parent="." index="6"]
+border_color = Color( 0.733333, 0.568627, 0.972549, 1 )
+
+[node name="brick_panel4" parent="Bottom_ui" index="0"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="brick_panel5" parent="Bottom_ui" index="1"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="brick_panel6" parent="Bottom_ui" index="2"]
+custom_styles/panel = ExtResource( 6 )
+
+[node name="Turn_Label" parent="." index="11"]
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.764706, 0.627451, 0.964706, 1 )
+custom_colors/font_outline_modulate = Color( 0.162618, 0.0393677, 0.335938, 1 )

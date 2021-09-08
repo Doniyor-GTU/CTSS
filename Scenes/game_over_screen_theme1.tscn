@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://themes/1/1_gameover_replay_button_normal.tres" type="StyleBox" id=1]
+[ext_resource path="res://themes/1/1_gameover_replay_button_pressed.tres" type="StyleBox" id=2]
+[ext_resource path="res://themes/1/1_game_over_panel.tres" type="StyleBox" id=3]
+[ext_resource path="res://Scenes/game_over_screen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://themes/1/1_gameover_replay_button_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://themes/1/1_gameover_panel_font.tres" type="DynamicFont" id=6]
+
+[node name="pause_screen_theme1" instance=ExtResource( 4 )]
+
+[node name="ColorRect" parent="." index="0"]
+margin_top = 1.68176
+margin_bottom = 1.68176
+color = Color( 1, 1, 1, 0.290196 )
+
+[node name="GameOverPanel" parent="." index="1"]
+margin_left = -197.0
+margin_top = -167.0
+margin_right = 199.0
+margin_bottom = -9.0
+rect_min_size = Vector2( 396, 158 )
+custom_styles/panel = ExtResource( 3 )
+
+[node name="Button" parent="GameOverPanel" index="0"]
+margin_left = -127.898
+margin_top = 35.8978
+margin_right = 132.102
+margin_bottom = 121.898
+rect_min_size = Vector2( 260, 86 )
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.788235, 0.780392, 0.666667, 1 )
+custom_colors/font_color_hover = Color( 0.788235, 0.780392, 0.666667, 1 )
+custom_colors/font_color_pressed = Color( 0.788235, 0.780392, 0.666667, 1 )
+text = "Replay"
+
+[node name="text" type="Label" parent="GameOverPanel" index="1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -151.5
+margin_top = -31.5
+margin_right = 151.5
+margin_bottom = 31.5
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.788235, 0.780392, 0.666667, 1 )
+text = "GAME OVER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

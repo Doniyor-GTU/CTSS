@@ -1,0 +1,1016 @@
+[gd_scene load_steps=72 format=2]
+
+[ext_resource path="res://Fonts/911Fonts.com_CenturyGothicRegular__-_911fonts.com_fonts_mhpY.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://themes/standart/MainScreen_playbutton_normal.tres" type="StyleBox" id=2]
+[ext_resource path="res://themes/standart/MainScreen_playbutton_pressed.tres" type="StyleBox" id=3]
+[ext_resource path="res://Fonts/Bumpo.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Art/play_theme1.png" type="Texture" id=5]
+[ext_resource path="res://themes/2/max_score_bg.tres" type="StyleBox" id=6]
+[ext_resource path="res://Scripts/MainScreen.gd" type="Script" id=7]
+[ext_resource path="res://Art/blue_bg.png" type="Texture" id=8]
+[ext_resource path="res://themes/1/max_score_bg.tres" type="StyleBox" id=9]
+[ext_resource path="res://Art/score.png" type="Texture" id=10]
+[ext_resource path="res://Art/LOGO.png" type="Texture" id=11]
+[ext_resource path="res://themes/1/buttons/Sound_pressed.tres" type="StyleBox" id=12]
+[ext_resource path="res://themes/1/buttons/Themes_pressed.tres" type="StyleBox" id=13]
+[ext_resource path="res://themes/1/settings_buttons_font.tres" type="DynamicFont" id=14]
+[ext_resource path="res://themes/2/settings_button_font.tres" type="DynamicFont" id=15]
+[ext_resource path="res://themes/2/buttons/Sound_normal.tres" type="StyleBox" id=16]
+[ext_resource path="res://themes/2/buttons/Sound_pressed.tres" type="StyleBox" id=17]
+[ext_resource path="res://themes/3/buttons/Sound_normal.tres" type="StyleBox" id=18]
+[ext_resource path="res://themes/3/buttons/Sound_pressed.tres" type="StyleBox" id=19]
+[ext_resource path="res://themes/3/settings_button_font.tres" type="DynamicFont" id=20]
+[ext_resource path="res://Art/play_theme3.png" type="Texture" id=21]
+[ext_resource path="res://Art/play_theme2.png" type="Texture" id=22]
+[ext_resource path="res://themes/standart/buttons/Theme_normal.tres" type="StyleBox" id=23]
+[ext_resource path="res://themes/standart/buttons/RateUs_pressed.tres" type="StyleBox" id=24]
+[ext_resource path="res://themes/standart/buttons/RateUs_normal.tres" type="StyleBox" id=25]
+[ext_resource path="res://themes/standart/buttons/Theme_pressed.tres" type="StyleBox" id=26]
+[ext_resource path="res://themes/standart/buttons/Sound_pressed.tres" type="StyleBox" id=27]
+[ext_resource path="res://themes/standart/buttons/Sound_normal.tres" type="StyleBox" id=28]
+[ext_resource path="res://themes/1/buttons/Sound_normal.tres" type="StyleBox" id=29]
+[ext_resource path="res://themes/1/buttons/Themes_normal.tres" type="StyleBox" id=30]
+[ext_resource path="res://themes/1/buttons/RateUs_pressed.tres" type="StyleBox" id=31]
+[ext_resource path="res://themes/1/buttons/RateUs_normal.tres" type="StyleBox" id=32]
+[ext_resource path="res://themes/2/buttons/RateUs_normal.tres" type="StyleBox" id=33]
+[ext_resource path="res://themes/2/buttons/RateUs_pressed.tres" type="StyleBox" id=34]
+[ext_resource path="res://themes/2/buttons/Themes_normal.tres" type="StyleBox" id=35]
+[ext_resource path="res://themes/2/buttons/Themes_pressed.tres" type="StyleBox" id=36]
+[ext_resource path="res://themes/3/buttons/RateUs_pressed.tres" type="StyleBox" id=37]
+[ext_resource path="res://themes/3/buttons/RateUs_normal.tres" type="StyleBox" id=38]
+[ext_resource path="res://themes/3/buttons/THemes_pressed.tres" type="StyleBox" id=39]
+[ext_resource path="res://themes/3/buttons/Themes_normal.tres" type="StyleBox" id=40]
+[ext_resource path="res://Scripts/SoundMainScreen.gd" type="Script" id=41]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=42]
+[ext_resource path="res://Art/background_shape.png" type="Texture" id=43]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.392157 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 70
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=7]
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 50
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 700, 700 )
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 700, 700 )
+modulate_color = Color( 0.870588, 0.843137, 0.686275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 700, 700 )
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="DynamicFont" id=15]
+size = 25
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 90
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 700, 700 )
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 700, 700 )
+modulate_color = Color( 0.796078, 0.992157, 0.654902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 700, 700 )
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 700, 700 )
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 700, 700 )
+modulate_color = Color( 0.890196, 0.658824, 0.941176, 1 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 700, 700 )
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.301961, 0.121569, 0.568627, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.25098, 0.12549, 0.427451, 1 )
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="MainScreen" type="Node"]
+script = ExtResource( 7 )
+
+[node name="Theme_0" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="Theme_0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.561218
+margin_right = -0.561218
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shape_shadow" type="TextureRect" parent="Theme_0/Background"]
+modulate = Color( 0, 0, 0, 0.270588 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 3.0
+margin_bottom = 2.0
+texture = ExtResource( 43 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shape" type="TextureRect" parent="Theme_0/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 43 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dark_effect" type="Panel" parent="Theme_0/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 22.0
+margin_top = 27.0
+margin_right = -22.0
+margin_bottom = -27.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Theme_0"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.286275 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Logo" type="Control" parent="Theme_0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = 120.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Theme_0/Logo"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -57.0
+margin_right = 57.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.823529, 0, 1 )
+text = "CTSS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="TextureRect" parent="Theme_0/Logo"]
+margin_left = -67.4645
+margin_top = 60.3212
+margin_right = 72.5355
+margin_bottom = 168.321
+rect_min_size = Vector2( 140, 108 )
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_0" type="Button" parent="Theme_0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -165.0
+margin_top = -186.0
+margin_right = 165.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 330, 330 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skor" type="TextureRect" parent="Theme_0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -190.0
+margin_top = 162.0
+margin_right = 190.0
+margin_bottom = 362.0
+rect_min_size = Vector2( 380, 180 )
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Theme_0/Skor"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -159.5
+margin_top = 43.0
+margin_right = 155.5
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.0784314, 0.364706, 0.407843, 1 )
+text = "HIGHEST NUMBER OF TURNS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Theme_0/Skor"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -166.5
+margin_top = 10.0
+margin_right = 164.5
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.701961, 0.396078, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.443137, 0.301961, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "45"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="HBoxContainer" parent="Theme_0/Skor"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -143.5
+margin_top = 34.0
+margin_right = 143.5
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="star_button_0" type="Button" parent="Theme_0/Skor/buttons"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+rect_pivot_offset = Vector2( 59, 26 )
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 25 )
+custom_styles/pressed = ExtResource( 24 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = ExtResource( 25 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.0784314, 0.364706, 0.407843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="themes_button_0" type="Button" parent="Theme_0/Skor/buttons"]
+margin_left = 108.0
+margin_right = 178.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+rect_pivot_offset = Vector2( 59, 26 )
+size_flags_horizontal = 6
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 23 )
+custom_styles/pressed = ExtResource( 26 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = ExtResource( 23 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.0784314, 0.364706, 0.407843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sound_button_0" type="Button" parent="Theme_0/Skor/buttons"]
+margin_left = 217.0
+margin_right = 287.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+rect_pivot_offset = Vector2( 59, 26 )
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 28 )
+custom_styles/pressed = ExtResource( 27 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = ExtResource( 28 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.0784314, 0.364706, 0.407843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Theme_1" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Theme_1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0.996078, 0.94902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Control" parent="Theme_1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = 96.0
+margin_bottom = 96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Theme_1/Logo"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -57.0
+margin_right = 57.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.882353, 0.729412, 0.109804, 1 )
+text = "CTSS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="TextureRect" parent="Theme_1/Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = 60.0
+margin_right = 73.0
+margin_bottom = 168.0
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_1" type="Button" parent="Theme_1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.811
+margin_top = -183.243
+margin_right = 141.189
+margin_bottom = 96.7568
+rect_min_size = Vector2( 280, 280 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skor" type="Panel" parent="Theme_1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -190.0
+margin_top = 142.0
+margin_right = 190.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 380, 180 )
+custom_styles/panel = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Theme_1/Skor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -163.0
+margin_top = 24.0
+margin_right = 163.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0.882353, 0.729412, 0.109804, 1 )
+text = "HIGHEST NUMBER OF TURNS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Theme_1/Skor"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.5
+margin_top = -39.5
+margin_right = 162.5
+margin_bottom = 71.5
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0.882353, 0.729412, 0.109804, 1 )
+text = "452"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="HBoxContainer" parent="Theme_1/Skor"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -143.5
+margin_top = 42.0
+margin_right = 143.5
+margin_bottom = 112.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Star_button_1" type="Button" parent="Theme_1/Skor/Buttons"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 32 )
+custom_styles/pressed = ExtResource( 31 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/normal = ExtResource( 32 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.882353, 0.729412, 0.109804, 1 )
+
+[node name="Theme_button_1" type="Button" parent="Theme_1/Skor/Buttons"]
+margin_left = 108.0
+margin_right = 178.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 6
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 30 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/normal = ExtResource( 30 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.882353, 0.729412, 0.109804, 1 )
+
+[node name="Sound_button_1" type="Button" parent="Theme_1/Skor/Buttons"]
+margin_left = 217.0
+margin_right = 287.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 29 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/normal = ExtResource( 29 )
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.882353, 0.729412, 0.109804, 1 )
+
+[node name="Theme_2" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Theme_2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.109804, 0.109804, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Control" parent="Theme_2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = 96.0
+margin_bottom = 96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Theme_2/Logo"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -57.0
+margin_right = 57.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.592157, 0.866667, 0.337255, 1 )
+text = "CTSS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="TextureRect" parent="Theme_2/Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = 60.0
+margin_right = 73.0
+margin_bottom = 168.0
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_2" type="Button" parent="Theme_2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.811
+margin_top = -183.243
+margin_right = 141.189
+margin_bottom = 96.7568
+rect_min_size = Vector2( 280, 280 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skor" type="Panel" parent="Theme_2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -190.0
+margin_top = 142.0
+margin_right = 190.0
+margin_bottom = 322.0
+rect_min_size = Vector2( 380, 180 )
+custom_styles/panel = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Theme_2/Skor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -163.0
+margin_top = 24.0
+margin_right = 163.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0.592157, 0.866667, 0.337255, 1 )
+text = "HIGHEST NUMBER OF TURNS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Theme_2/Skor"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.5
+margin_top = -39.5
+margin_right = 162.5
+margin_bottom = 71.5
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0.592157, 0.866667, 0.337255, 1 )
+text = "452"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="HBoxContainer" parent="Theme_2/Skor"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -143.5
+margin_top = 42.0
+margin_right = 143.5
+margin_bottom = 112.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rate_button_2" type="Button" parent="Theme_2/Skor/Buttons"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 33 )
+custom_styles/pressed = ExtResource( 34 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/normal = ExtResource( 33 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.592157, 0.866667, 0.337255, 1 )
+
+[node name="Theme_button_2" type="Button" parent="Theme_2/Skor/Buttons"]
+margin_left = 108.0
+margin_right = 178.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 6
+size_flags_vertical = 2
+custom_styles/hover = ExtResource( 35 )
+custom_styles/pressed = ExtResource( 36 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/normal = ExtResource( 35 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.592157, 0.866667, 0.337255, 1 )
+
+[node name="Sound_button_2" type="Button" parent="Theme_2/Skor/Buttons"]
+margin_left = 217.0
+margin_right = 287.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 16 )
+custom_styles/pressed = ExtResource( 17 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/normal = ExtResource( 16 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.592157, 0.866667, 0.337255, 1 )
+
+[node name="Theme_3" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Theme_3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.435294, 0.207843, 0.768627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Control" parent="Theme_3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = 96.0
+margin_bottom = 96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Theme_3/Logo"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -57.0
+margin_right = 57.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.764706, 0.627451, 0.964706, 1 )
+text = "CTSS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="TextureRect" parent="Theme_3/Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = 60.0
+margin_right = 73.0
+margin_bottom = 168.0
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_3" type="Button" parent="Theme_3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -138.811
+margin_top = -183.243
+margin_right = 141.189
+margin_bottom = 96.7568
+rect_min_size = Vector2( 280, 280 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/focus = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skor" type="Panel" parent="Theme_3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -190.0
+margin_top = 141.206
+margin_right = 190.0
+margin_bottom = 321.206
+rect_min_size = Vector2( 380, 180 )
+custom_styles/panel = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Theme_3/Skor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -163.0
+margin_top = 24.0
+margin_right = 163.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0.764706, 0.627451, 0.964706, 1 )
+text = "HIGHEST NUMBER OF TURNS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Theme_3/Skor"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.5
+margin_top = -40.7599
+margin_right = 162.5
+margin_bottom = 70.2401
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0.764706, 0.627451, 0.964706, 1 )
+text = "452"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="HBoxContainer" parent="Theme_3/Skor"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -143.5
+margin_top = 42.0
+margin_right = 143.5
+margin_bottom = 112.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rate_button_3" type="Button" parent="Theme_3/Skor/Buttons"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 38 )
+custom_styles/pressed = ExtResource( 37 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/normal = ExtResource( 38 )
+custom_fonts/font = ExtResource( 20 )
+
+[node name="Theme_button_3" type="Button" parent="Theme_3/Skor/Buttons"]
+margin_left = 108.0
+margin_right = 178.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 6
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 40 )
+custom_styles/pressed = ExtResource( 39 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/normal = ExtResource( 40 )
+custom_fonts/font = ExtResource( 20 )
+
+[node name="Sound_button_3" type="Button" parent="Theme_3/Skor/Buttons"]
+margin_left = 217.0
+margin_right = 287.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 18 )
+custom_styles/pressed = ExtResource( 19 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/normal = ExtResource( 18 )
+custom_fonts/font = ExtResource( 20 )
+
+[node name="Sound" type="Node" parent="."]
+script = ExtResource( 41 )
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource( 42 )
+is_real = true
+banner_id = "ca-app-pub-8647559794008327/4341432081"
+interstitial_id = "ca-app-pub-8647559794008327/2836778728"
+rewarded_id = "ca-app-pub-8647559794008327/5271370372"
+
+[node name="AdLoadTimer" type="Timer" parent="AdMob"]
+wait_time = 5.0
+one_shot = true
+
+[node name="StartLoadTimer" type="Timer" parent="AdMob"]
+wait_time = 5.0
+one_shot = true
+[connection signal="pressed" from="Theme_0/Button_0" to="." method="_on_Button_0_pressed"]
+[connection signal="pressed" from="Theme_0/Button_0" to="Sound" method="_on_Button_0_pressed"]
+[connection signal="pressed" from="Theme_0/Skor/buttons/star_button_0" to="." method="_on_star_button_0_pressed"]
+[connection signal="pressed" from="Theme_0/Skor/buttons/star_button_0" to="Sound" method="_on_star_button_0_pressed"]
+[connection signal="pressed" from="Theme_0/Skor/buttons/themes_button_0" to="." method="_on_themes_button_0_pressed"]
+[connection signal="pressed" from="Theme_0/Skor/buttons/themes_button_0" to="Sound" method="_on_themes_button_0_pressed"]
+[connection signal="pressed" from="Theme_0/Skor/buttons/sound_button_0" to="." method="_on_sound_button_0_pressed"]
+[connection signal="pressed" from="Theme_0/Skor/buttons/sound_button_0" to="Sound" method="_on_sound_button_0_pressed"]
+[connection signal="pressed" from="Theme_1/Button_1" to="." method="_on_Button_1_pressed"]
+[connection signal="pressed" from="Theme_1/Button_1" to="Sound" method="_on_Button_1_pressed"]
+[connection signal="pressed" from="Theme_1/Skor/Buttons/Star_button_1" to="." method="_on_Star_button_1_pressed"]
+[connection signal="pressed" from="Theme_1/Skor/Buttons/Star_button_1" to="Sound" method="_on_Star_button_1_pressed"]
+[connection signal="pressed" from="Theme_1/Skor/Buttons/Theme_button_1" to="." method="_on_Theme_button_1_pressed"]
+[connection signal="pressed" from="Theme_1/Skor/Buttons/Theme_button_1" to="Sound" method="_on_Theme_button_1_pressed"]
+[connection signal="pressed" from="Theme_1/Skor/Buttons/Sound_button_1" to="." method="_on_Sound_button_1_pressed"]
+[connection signal="pressed" from="Theme_1/Skor/Buttons/Sound_button_1" to="Sound" method="_on_Sound_button_1_pressed"]
+[connection signal="pressed" from="Theme_2/Button_2" to="." method="_on_Button_2_pressed"]
+[connection signal="pressed" from="Theme_2/Button_2" to="Sound" method="_on_Button_2_pressed"]
+[connection signal="pressed" from="Theme_2/Skor/Buttons/Rate_button_2" to="." method="_on_Rate_button_2_pressed"]
+[connection signal="pressed" from="Theme_2/Skor/Buttons/Rate_button_2" to="Sound" method="_on_Rate_button_2_pressed"]
+[connection signal="pressed" from="Theme_2/Skor/Buttons/Theme_button_2" to="." method="_on_Theme_button_2_pressed"]
+[connection signal="pressed" from="Theme_2/Skor/Buttons/Theme_button_2" to="Sound" method="_on_Theme_button_2_pressed"]
+[connection signal="pressed" from="Theme_2/Skor/Buttons/Sound_button_2" to="." method="_on_Sound_button_2_pressed"]
+[connection signal="pressed" from="Theme_2/Skor/Buttons/Sound_button_2" to="Sound" method="_on_Sound_button_2_pressed"]
+[connection signal="pressed" from="Theme_3/Button_3" to="." method="_on_Button_3_pressed"]
+[connection signal="pressed" from="Theme_3/Button_3" to="Sound" method="_on_Button_3_pressed"]
+[connection signal="pressed" from="Theme_3/Skor/Buttons/Rate_button_3" to="." method="_on_Rate_button_3_pressed"]
+[connection signal="pressed" from="Theme_3/Skor/Buttons/Rate_button_3" to="Sound" method="_on_Rate_button_3_pressed"]
+[connection signal="pressed" from="Theme_3/Skor/Buttons/Theme_button_3" to="." method="_on_Theme_button_3_pressed"]
+[connection signal="pressed" from="Theme_3/Skor/Buttons/Theme_button_3" to="Sound" method="_on_Theme_button_3_pressed"]
+[connection signal="pressed" from="Theme_3/Skor/Buttons/Sound_button_3" to="." method="_on_Sound_button_3_pressed"]
+[connection signal="pressed" from="Theme_3/Skor/Buttons/Sound_button_3" to="Sound" method="_on_Sound_button_3_pressed"]
+[connection signal="banner_failed_to_load" from="AdMob" to="." method="_on_AdMob_banner_failed_to_load"]
+[connection signal="banner_loaded" from="AdMob" to="." method="_on_AdMob_banner_loaded"]
+[connection signal="timeout" from="AdMob/AdLoadTimer" to="." method="_on_AdLoadTimer_timeout"]
+[connection signal="timeout" from="AdMob/StartLoadTimer" to="." method="_on_StartLoadTimer_timeout"]
